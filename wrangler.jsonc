@@ -1,17 +1,24 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "finci",
-  "compatibility_date": "2026-10-13",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  "main": "vinext/server/fetch-handler",
-  "assets": {
-    "directory": "dist/client",
-    "not_found_handling": "none",
-    "binding": "ASSETS"
-  },
-  "images": {
-    "binding": "IMAGES"
-  }
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "finci",
+	"compatibility_date": "2026-10-13",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"main": "vinext/server/fetch-handler",
+	"assets": {
+		"directory": "dist/client",
+		"not_found_handling": "none",
+		"binding": "ASSETS"
+	},
+	"images": {
+		"binding": "IMAGES"
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "finci",
+			"database_id": "dd7bc7c6-3a02-4b3a-a4d6-dbcba50af230"
+		}
+	]
 }
