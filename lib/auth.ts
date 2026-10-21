@@ -2,7 +2,7 @@ import { betterAuth } from "better-auth";
 import { withCloudflare } from "better-auth-cloudflare";
 import type { IncomingRequestCfProperties } from "@cloudflare/workers-types";
 
-export function createAuth(env?: any, cf?: IncomingRequestCfProperties) {
+export function createAuth(env?: Env, cf?: IncomingRequestCfProperties) {
   return betterAuth({
     baseURL: env?.BETTER_AUTH_URL ?? process.env.BETTER_AUTH_URL,
     secret: env?.BETTER_AUTH_SECRET ?? process.env.BETTER_AUTH_SECRET,
