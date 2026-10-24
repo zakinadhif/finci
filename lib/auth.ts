@@ -4,8 +4,10 @@ import type { IncomingRequestCfProperties } from "@cloudflare/workers-types";
 
 export function createAuth(env?: Env, cf?: IncomingRequestCfProperties) {
   return betterAuth({
-    baseURL: env?.BETTER_AUTH_URL ?? process.env.BETTER_AUTH_URL,
-    secret: env?.BETTER_AUTH_SECRET ?? process.env.BETTER_AUTH_SECRET,
+    baseURL: env?.BETTER_AUTH_URL ?? process.env.BETTER_AUTH_URL ?? "http://localhost:5173",
+    secret:
+      env?.BETTER_AUTH_SECRET ??
+      process.env.BETTER_AUTH_SECRET,
     ...withCloudflare(
       {
         autoDetectIpAddress: !!cf,
@@ -22,7 +24,7 @@ export function createAuth(env?: Env, cf?: IncomingRequestCfProperties) {
         },
       }
     ),
-    ...(env ? {} : { database: { provider: "sqlite" } }),
+    ...(env?.DB ? {} : { database: { provider: "sqlite" } }),
   });
 }
 
