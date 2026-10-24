@@ -38,7 +38,18 @@ function post<T>(path: string, data: unknown): Promise<T> {
   return request<T>(path, { method: "POST", body: JSON.stringify(data) });
 }
 
+import type { IngestEmailResult, RawEmailRecord } from "@/lib/email-ingest";
+import type { ApiSuccessResponse } from "@/lib/api-response";
+
 export const api = {
-  // Add your API methods here, e.g.:
-  // hello: () => request<{ message: string }>("/api/hello"),
+  emails: {
+    list: () =>
+      request<ApiSuccessResponse<{ emails: RawEmailRecord[] }>>("/api/emails"),
+    ingest: (payload: {
+      rawEml: string;
+      envelopeFrom?: string;
+      envelopeTo?: string;
+    }) =>
+      post<ApiSuccessResponse<IngestEmailResult>>("/api/emails", payload),
+  },
 };

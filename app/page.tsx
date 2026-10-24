@@ -10,6 +10,7 @@ import {
   Shield01Icon,
   ArrowRight01Icon,
   LockPasswordIcon,
+  Mail01Icon,
   UserIcon,
 } from "@hugeicons/core-free-icons";
 
@@ -74,15 +75,26 @@ export default function Home() {
 
               <div className="flex flex-wrap gap-3 pt-2">
                 <Link
-                  href="/register"
+                  href="/emails"
                   className={cn(
                     buttonVariants({ variant: "default", size: "lg" }),
                     "rounded-2xl gap-2 shadow-md"
                   )}
                 >
+                  <HugeiconsIcon icon={Mail01Icon} className="size-4" />
+                  <span>Email Capture (Step 1a)</span>
+                  <HugeiconsIcon icon={ArrowRight01Icon} className="size-4" />
+                </Link>
+
+                <Link
+                  href="/register"
+                  className={cn(
+                    buttonVariants({ variant: "outline", size: "lg" }),
+                    "rounded-2xl gap-2"
+                  )}
+                >
                   <HugeiconsIcon icon={UserIcon} className="size-4" />
                   <span>Create Account</span>
-                  <HugeiconsIcon icon={ArrowRight01Icon} className="size-4" />
                 </Link>
 
                 <Link
